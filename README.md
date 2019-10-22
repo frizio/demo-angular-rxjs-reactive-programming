@@ -9,8 +9,11 @@ RxJs is a toolkit that allow us to build asyncronous applications in reactive st
 - Observables and Subjects
 
 ### Part 2
+#### browser event experiment
+#### event bus experiment
 - Global Event Bus
 - Observable Pattern
+- Solving the problem of component communication (not nested) by using a global event bus based on the observer pattern 
 
 ## Angular CLI version 
 
