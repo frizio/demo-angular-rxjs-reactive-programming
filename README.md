@@ -2,11 +2,15 @@
 
 RxJs is a toolkit that allow us to build asyncronous applications in reactive style using the Observable pattern.
 
+### Part 1
 - Reactive Programming
 - Observable Pattern
 - RxJs library and its operators
 - Observables and Subjects
 
+### Part 2
+- Global Event Bus
+- Observable Pattern
 
 ## Angular CLI version 
 
