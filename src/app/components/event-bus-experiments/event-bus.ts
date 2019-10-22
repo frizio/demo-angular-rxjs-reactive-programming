@@ -1,4 +1,6 @@
 
+import * as _ from 'lodash';
+
 export interface Observer {
   notify(data: any);
 }
@@ -10,21 +12,23 @@ interface Subject {
 }
 
 class EventBus implements Subject {
-  
+
   private observers: Observer[] = [];
 
   registerObserver(eventType: string, obs: Observer) {
-    throw new Error('');
+    this.observers.push(obs);
   }
   unregisterObserver(eventType: string, obs: Observer) {
-    throw new Error('');
+    const newObservers = _.remove(
+      this.observers,
+      el => el === obs
+    );
   }
+
   notifyObservers(eventType: string, data: any) {
-    throw new Error('');
+    this.observers.forEach(obs => obs.notify(data));
   }
-
-
 
 }
 
-
+export const globalEventBus = new EventBus();
