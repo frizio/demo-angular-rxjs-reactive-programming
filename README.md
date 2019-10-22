@@ -1,4 +1,14 @@
-# DemoAngularRxjsReactiveProgramming
+# Demo Angular Rxjs Reactive Programming
+
+RxJs is a toolkit that allow us to build asyncronous applications in reactive style using the Observable pattern.
+
+- Reactive Programming
+- Observable Pattern
+- RxJs library and its operators
+- Observables and Subjects
+
+
+## Angular CLI version 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
 
