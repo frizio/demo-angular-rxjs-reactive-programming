@@ -9,3 +9,22 @@ interface Subject {
   notifyObservers(eventType: string, data: any);
 }
 
+class EventBus implements Subject {
+  
+  private observers: Observer[] = [];
+
+  registerObserver(eventType: string, obs: Observer) {
+    throw new Error('');
+  }
+  unregisterObserver(eventType: string, obs: Observer) {
+    throw new Error('');
+  }
+  notifyObservers(eventType: string, data: any) {
+    throw new Error('');
+  }
+
+
+
+}
+
+
