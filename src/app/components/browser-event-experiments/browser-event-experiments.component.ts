@@ -15,6 +15,7 @@ export class BrowserEventExperimentsComponent implements OnInit {
     this.hoverSection = document.getElementById('hover');
     // 1. Analogy: Subscribe to the stream of data
     this.hoverSection.addEventListener('mousemove', onMouseMove);
+    this.hoverSection.addEventListener('click', onMouseClick);
   }
 
   unsubscribe() {
@@ -27,5 +28,9 @@ export class BrowserEventExperimentsComponent implements OnInit {
 
 // 2. Analogy: React to the arrival of new data
 function onMouseMove(e: MouseEvent) {
+  console.log(e);
+}
+
+function onMouseClick(e: MouseEvent) {
   console.log(e);
 }
