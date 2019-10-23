@@ -6,26 +6,26 @@ export interface Observer {
 }
 
 interface Subject {
-  registerObserver(eventType: string, obs: Observer);
-  unregisterObserver(eventType: string, obs: Observer);
-  notifyObservers(eventType: string, data: any);
+  registerObserver(obs: Observer);
+  unregisterObserver(obs: Observer);
+  notifyObservers(data: any);
 }
 
 class EventBus implements Subject {
 
   private observers: Observer[] = [];
 
-  registerObserver(eventType: string, obs: Observer) {
+  registerObserver(obs: Observer) {
     this.observers.push(obs);
   }
-  unregisterObserver(eventType: string, obs: Observer) {
+  unregisterObserver(obs: Observer) {
     const newObservers = _.remove(
       this.observers,
       el => el === obs
     );
   }
 
-  notifyObservers(eventType: string, data: any) {
+  notifyObservers(data: any) {
     this.observers.forEach(obs => obs.notify(data));
   }
 
