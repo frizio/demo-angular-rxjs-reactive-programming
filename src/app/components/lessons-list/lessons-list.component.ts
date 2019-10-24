@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LessonsListComponent implements OnInit, Observer {
 
+  // Local component copy of the sample lessons: Problem 1
   lessons: Lesson[] = [];
 
   constructor() {
