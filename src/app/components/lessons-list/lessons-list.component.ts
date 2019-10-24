@@ -1,5 +1,5 @@
 import { Lesson } from './../../shared/model/lesson';
-import { globalEventBus, Observer } from './../event-bus-experiments/event-bus';
+import { globalEventBus, Observer, LESSONS_LIST_AVAILABLE } from './../event-bus-experiments/event-bus';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,7 +13,7 @@ export class LessonsListComponent implements OnInit, Observer {
 
   constructor() {
     console.log('1. LessonsListComponent is register as Observer');
-    globalEventBus.registerObserver(this);
+    globalEventBus.registerObserver(LESSONS_LIST_AVAILABLE, this);
   }
 
   ngOnInit() {
