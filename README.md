@@ -14,6 +14,11 @@ RxJs is a toolkit that allow us to build asyncronous applications in reactive st
 - Global Event Bus
 - Observable Pattern
 - Solving the problem of component communication (not nested) by using a global event bus based on the observer pattern 
+- Epilogo
+-- Data ownering and encapsulation: no central owner of the data;
+-- Event Bus (analogo a SUBJECT) globally accessible: everyone can registry and notify events;
+-- Timing: sequentiality in event registration and notification.
+
 
 ## Angular CLI version 
 
