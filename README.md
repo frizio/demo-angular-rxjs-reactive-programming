@@ -19,6 +19,10 @@ RxJs is a toolkit that allow us to build asyncronous applications in reactive st
 -- Event Bus (analogo a SUBJECT) globally accessible: everyone can registry and notify events;
 -- Timing: sequentiality in event registration and notification.
 
+### Part 3
+#### observable pattern experiments
+- First problem: mixing the ability of observe data and emitting the same data.
+-- Solution: separate the ability of register on observer and the ability to emit data
 
 ## Angular CLI version 
 
