@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import { Lesson } from './../../shared/model/lesson';
 import { globalEventBus, Observer, LESSONS_LIST_AVAILABLE, ADD_NEW_LESSON } from './../event-bus-experiments/event-bus';
 import { Component, OnInit } from '@angular/core';
@@ -32,12 +33,20 @@ export class LessonsListComponent implements OnInit, Observer {
 
   notify(data: Lesson[]) {
     console.log('3. LessonsListComponent Receiving lessons ');
-    this.lessons = data;
+    this.lessons = data.slice(0);
   }
 
   toggleLessonViewed(lesson:Lesson) {
     console.log('Toggling lesson ...');
     lesson.completed = !lesson.completed;
-}
+  }
+
+  delete(deleted: Lesson) {
+    _.remove(
+      this.lessons,
+      lesson => lesson.id === deleted.id
+     );
+
+  }
 
 }
