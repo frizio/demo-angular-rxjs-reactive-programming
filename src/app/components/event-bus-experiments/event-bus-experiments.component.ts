@@ -12,7 +12,7 @@ export class EventBusExperimentsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('Top level component broadcast all sample lessons');
+    console.log('2.Top level component broadcast all sample lessons');
     globalEventBus.notifyObservers(sampleLessons);
   }
 

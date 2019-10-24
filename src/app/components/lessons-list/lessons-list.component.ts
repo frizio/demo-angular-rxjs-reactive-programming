@@ -12,7 +12,7 @@ export class LessonsListComponent implements OnInit, Observer {
   lessons: Lesson[] = [];
 
   constructor() {
-    console.log('LessonsListComponent is register as Observer');
+    console.log('1. LessonsListComponent is register as Observer');
     globalEventBus.registerObserver(this);
   }
 
@@ -20,7 +20,7 @@ export class LessonsListComponent implements OnInit, Observer {
   }
 
   notify(data: Lesson[]) {
-    console.log('LessonsListComponent Receiving lessons ');
+    console.log('3. LessonsListComponent Receiving lessons ');
     this.lessons = data;
   }
 
