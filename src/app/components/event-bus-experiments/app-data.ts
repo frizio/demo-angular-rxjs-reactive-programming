@@ -27,7 +27,7 @@ class SubjectImplementation implements Subject {
   next(data: any) {
     // Breoadcate to all observers the emitted data
     this.observers.forEach(
-      obs => obs.next(data);
+      obs => obs.next(data)
     );
   }
 
@@ -44,4 +44,5 @@ class SubjectImplementation implements Subject {
 
 }
 
+// This define the data of the application
 export let lessonsList$: Observable;
