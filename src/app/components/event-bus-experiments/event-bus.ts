@@ -16,38 +16,12 @@ export interface Observable {
   unsubscribe(obs: Observer);
 }
 
+// The Subject essentially is the "EventBus"
 interface Subject extends Observer, Observable {
-
 }
 
 class EventBus implements Subject {
-
-  // Refactored as map: keep different list of Observers for event type
-  private observers: { [key:string]: Observer[] } = {};
-
-  private observersPerEventType(eventType:string): Observer[] {
-    const observersPerType = this.observers[eventType];
-    if (!observersPerType) {
-        this.observers[eventType] = [];
-    }
-    return this.observers[eventType];
-  }
-
-  registerObserver(eventType:string, obs: Observer) {
-    this.observersPerEventType(eventType).push(obs);
-  }
-
-  unregisterObserver(eventType:string, obs: Observer) {
-     _.remove(
-        this.observersPerEventType(eventType), 
-        el => el === obs 
-      );
-    }
-
-    notifyObservers(eventType:string, data: any) {
-      this.observersPerEventType(eventType).forEach(obs => obs.notify(data));
-    }
-
 }
+
 
 export const globalEventBus = new EventBus();
