@@ -44,5 +44,4 @@ class SubjectImplementation implements Subject {
 
 }
 
-
-export const globalEventBus = new EventBus();
+export let lessonsList$: Observable;
