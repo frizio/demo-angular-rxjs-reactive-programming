@@ -20,7 +20,28 @@ export interface Observable {
 interface Subject extends Observer, Observable {
 }
 
-class EventBus implements Subject {
+class SubjectImplementation implements Subject {
+
+  private observers: Observer[] = [];
+
+  next(data: any) {
+    // Breoadcate to all observers the emitted data
+    this.observers.forEach(
+      obs => obs.next(data);
+    );
+  }
+
+  subscribe(obs: Observer) {
+    this.observers.push(obs);
+  }
+
+  unsubscribe(obs: Observer) {
+    _.remove(
+      this.observers,
+      el => el === obs
+    );
+  }
+
 }
 
 
