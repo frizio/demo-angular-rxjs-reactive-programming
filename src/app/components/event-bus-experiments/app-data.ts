@@ -1,3 +1,4 @@
+import { Lesson } from './../../shared/model/lesson';
 
 import * as _ from 'lodash';
 
@@ -46,3 +47,10 @@ class SubjectImplementation implements Subject {
 
 // This define the data of the application
 export let lessonsList$: Observable;
+
+// 
+let lessons: Lesson[] = [];
+
+export function initializeLessonsList(newList: Lesson[]) {
+  lessons = _.cloneDeep(newList);
+}

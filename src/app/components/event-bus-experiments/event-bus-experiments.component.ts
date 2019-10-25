@@ -1,6 +1,7 @@
 import { Lesson } from './../../shared/model/lesson';
 import { Component, OnInit } from '@angular/core';
 import { sampleLessons } from './../../shared/model/sample-lessons';
+import { initializeLessonsList } from './app-data';
 
 @Component({
   selector: 'event-bus-experiments',
@@ -9,25 +10,22 @@ import { sampleLessons } from './../../shared/model/sample-lessons';
 })
 export class EventBusExperimentsComponent implements OnInit {
 
-  lessons: Lesson[] = [];
-
   constructor() { }
 
   ngOnInit() {
     console.log('2.Top level component broadcast all sample lessons');
-    this.lessons = sampleLessons.slice(0);
-    globalEventBus.notifyObservers(LESSONS_LIST_AVAILABLE, sampleLessons.slice(0));
+
+    initializeLessonsList(sampleLessons.slice(0));
 
     // Simulate server push scenario (like web server or ajax request )
     setTimeout(
       () => {
-       this.lessons.push( 
+       const newLesson = 
          {
           id: Math.random(),
           description: 'New lesson arriving from the backend'
           }
-       );
-        globalEventBus.notifyObservers(LESSONS_LIST_AVAILABLE, this.lessons);
+        //TODO
       }, 
       5000
     );
@@ -35,7 +33,7 @@ export class EventBusExperimentsComponent implements OnInit {
   }
 
   addLesson(lessonText: string) {
-    globalEventBus.notifyObservers(ADD_NEW_LESSON, lessonText);
+    //TODO
   }
 
 }
