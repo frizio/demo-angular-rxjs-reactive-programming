@@ -1,7 +1,8 @@
+import { Observer } from './../event-bus-experiments/app-data';
 import * as _ from 'lodash';
 import { Lesson } from './../../shared/model/lesson';
-import { globalEventBus, Observer, LESSONS_LIST_AVAILABLE, ADD_NEW_LESSON } from './../event-bus-experiments/event-bus';
 import { Component, OnInit } from '@angular/core';
+import { lessonsList$ } from '../event-bus-experiments/app-data';
 
 @Component({
   selector: 'lessons-list',
@@ -10,28 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LessonsListComponent implements OnInit, Observer {
 
-  // Local component copy of the sample lessons: Problem 1
   lessons: Lesson[] = [];
 
   constructor() {
     console.log('1. LessonsListComponent is register as Observer');
-    globalEventBus.registerObserver(
-      LESSONS_LIST_AVAILABLE, this
-    );
-    globalEventBus.registerObserver(
-      ADD_NEW_LESSON, 
-      { 
-        notify: 
-        lessonText => {
-          this.lessons.push( { id: Math.random(), description: lessonText } )
-      }
-  } );
+    lessonsList$.subscribe(this);
   }
 
   ngOnInit() {
   }
 
-  notify(data: Lesson[]) {
+  next(data: Lesson[]) {
     console.log('3. LessonsListComponent Receiving lessons ');
     this.lessons = data.slice(0);
   }
