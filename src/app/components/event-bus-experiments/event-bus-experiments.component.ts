@@ -1,6 +1,5 @@
 import { Lesson } from './../../shared/model/lesson';
 import { Component, OnInit } from '@angular/core';
-import { globalEventBus, LESSONS_LIST_AVAILABLE, ADD_NEW_LESSON } from './event-bus';
 import { sampleLessons } from './../../shared/model/sample-lessons';
 
 @Component({
