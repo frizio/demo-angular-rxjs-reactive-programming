@@ -23,6 +23,7 @@ RxJs is a toolkit that allow us to build asyncronous applications in reactive st
 #### observable pattern experiments
 - First problem: mixing the ability of observe data and emitting the same data.
 -- Solution: separate the ability of register on observer and the ability to emit data
+- Second Problem: Data Ownering - Encapsulation
 
 ## Angular CLI version 
 

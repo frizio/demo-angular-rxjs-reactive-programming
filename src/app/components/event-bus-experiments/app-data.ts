@@ -2,10 +2,6 @@ import { Lesson } from './../../shared/model/lesson';
 
 import * as _ from 'lodash';
 
-// Event type for the application
-export const LESSONS_LIST_AVAILABLE = 'NEW_LIST_AVAILABLE';
-export const ADD_NEW_LESSON = 'ADD_NEW_LESSON';
-
 export interface Observer {
   // Ability of emitting new data and being notified
   next(data: any);
