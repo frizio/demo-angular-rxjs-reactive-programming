@@ -42,7 +42,11 @@ class SubjectImplementation implements Subject {
 }
 
 // This define the data of the application
-export let lessonsList$: Observable;
+export let lessonsList$: Observable = {
+  subscribe: obs => {
+    // Take the observer and is going to do to do somethis with thw observer
+  }
+};
 
 // 
 let lessons: Lesson[] = [];
