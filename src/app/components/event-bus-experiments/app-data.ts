@@ -42,23 +42,22 @@ class SubjectImplementation implements Subject {
 }
 
 // Centralized service that manages the data
-class DataStore {
+class DataStore implements Observable {
 
- private lessons: Lesson[] = [];
+  private lessons: Lesson[] = [];
 
- private lessonsListSubject = new SubjectImplementation();
+  private lessonsListSubject = new SubjectImplementation();
 
- public lessonsList$: Observable = {
-  subscribe: obs => {
+  public subscribe(obs: Observer) {
     this.lessonsListSubject.subscribe(obs);
     obs.next(this.lessons);
-  },
-  unsubscribe: obs => {
+  }
+
+  public unsubscribe(obs: Observer) {
     this.lessonsListSubject.unsubscribe(obs);
   }
-};
 
- public initializeLessonsList(newList: Lesson[]) {
+  public initializeLessonsList(newList: Lesson[]) {
     this.lessons = _.cloneDeep(newList);
     this.broadcast();
   }
