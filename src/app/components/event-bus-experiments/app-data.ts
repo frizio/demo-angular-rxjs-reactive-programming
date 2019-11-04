@@ -9,9 +9,9 @@ class DataStore {
 
  private lessons: Lesson[] = [];
 
- private lessonsListSubject = new Subject();
+ private lessonsListSubject = new Subject<Lesson[]>();
 
- public lessonsList$: Observable<Lesson[]>  = this.lessonsList$.asObservable();
+ public lessonsList$: Observable<Lesson[]>  = this.lessonsListSubject.asObservable();
 
  public initializeLessonsList(newList: Lesson[]) {
     this.lessons = _.cloneDeep(newList);
@@ -27,14 +27,14 @@ class DataStore {
     _.remove(
       this.lessons,
       lesson => lesson.id === deleted.id
-     );
-     this.broadcast();
+    );
+    this.broadcast();
   }
 
-  toggleLessonViewed(toggled:Lesson) {
+  toggleLessonViewed(toggled: Lesson) {
     const lesson = _.find(
       this.lessons,
-      lesson => lesson.id === toggled.id
+      thelesson => thelesson.id === toggled.id
     );
     lesson.completed = !lesson.completed;
     this.broadcast();
