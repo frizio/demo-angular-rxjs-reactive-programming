@@ -11,11 +11,11 @@ export class LessonsCounterComponent implements OnInit, Observer {
 
   lessonsCounter = 0;
 
-  constructor() {
-      store.lessonsList$.subscribe(this);
-  }
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    store.lessonsList$.subscribe(this);
+  }
 
   next(data: Lesson[]) {
       this.lessonsCounter = data.length;

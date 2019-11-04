@@ -12,8 +12,7 @@ export class LessonsListComponent implements OnInit, Observer {
 
   public lessons: Lesson[] = []; //data access for the view
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit() {
     store.lessonsList$.subscribe(this);
