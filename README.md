@@ -26,8 +26,25 @@ RxJs is a toolkit that allow us to build asyncronous applications in reactive st
 - Second Problem: Data Ownering - Encapsulation
 -- Solution: centralize the data with Data store pattern.
 - Conclusion 1:
-In our program we are actually using two different patterns. We are using the <b>observable pattern</b> to create a clear separation between the ability to subscribe to the data and the ability to be able to trigger new versions of that data. So there is a clear separation between that <br/>> 
+-- In our program we are actually using two different patterns. We are using the <b>observable pattern</b> to create a clear separation between the ability to subscribe to the data and the ability to be able to trigger new versions of that data. So there is a clear separation between that <br/>> 
 And we've <b>centralized the data</b> in a single place in our application to solve the multiple ownership issue that we have. So if the data is modifiable it's important that only one part of the application has ownership of the data and not multiple parts like we had before.
+- Summary
+-- So let's now summarize what were the multiple problems that we solved using an implementation that is based around the observable pattern and the store pattern around this combination of patterns. 
+Well one of the first things that we have sold was that we no longer have the ability in components like the lessons counter the lessons at least to have direct access to the data that is shared with other components and we no longer have the ability to meet new versions of the data everywhere on the application. So if a part of the application like for example the lessons list component or the lessons counter needs the data is simply subscribes to it but it doesn't necessarily have the ability to emit new versions  of that data directly. So that was the first problem that was solved.
+The second problem that was solved is that now with this implementation we no longer have to reason about sequences of synchronous operations in our application. We don't have to necessarily subscribe here the less and counter in the constructor.So this makes it a lot simpler to reason about asynchronous operations.
+
+Now the first and separate problem that we have solved is that before we have multiple components or te top level component and the lessons least component that needed to modify the data but neither was the only owner of the data. So modifying the data locally created the problem that they had to notify other parts of the application of their modification. So with the store pattern we have moved the data to a central location and we have constrained the ownership of that data to a centralized service. So this solves the problem of who owns the data. The data is no longer owned by any specific component of the view the data is now owned by a service a centralized service, at the level of the service layer. So for example the lessons lease component wants to modify the data it needs to send a message to that centralized service which is the store the store will modify the data and it will broadcast those changes to any interested parties via the lessons least observable.
+So with these we have covered the main benefits of using a reactive approach for building a synchronous applications like user interfaces.
+
+What we're going to do next is we are going to show that the star pattern and observable pattern and
+
+actually much more closely related than we might see here in this implementation.
+
+Then we're going to introduce our SJS.
+
+We are going to replace our custom implementation of the observable pattern with our X G S and we're
+
+going to start using it to build applications using a catalog of reactive patterns.
 
 ## Angular CLI version 
 
