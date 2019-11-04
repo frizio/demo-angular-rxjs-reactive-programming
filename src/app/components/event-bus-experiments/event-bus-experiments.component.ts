@@ -24,7 +24,7 @@ export class EventBusExperimentsComponent implements OnInit {
           id: Math.random(),
           description: 'New lesson arriving from the backend'
           }
-        //TODO
+        store.addLesson(newLesson);
       }, 
       5000
     );
@@ -32,7 +32,11 @@ export class EventBusExperimentsComponent implements OnInit {
   }
 
   addLesson(lessonText: string) {
-    //TODO
+    const newLesson = {
+      id: Math.random(),
+      description: lessonText
+    };
+    store.addLesson(newLesson);
   }
 
 }

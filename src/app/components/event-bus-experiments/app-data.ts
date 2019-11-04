@@ -60,7 +60,12 @@ class DataStore {
 
  public initializeLessonsList(newList: Lesson[]) {
     this.lessons = _.cloneDeep(newList);
-    lessonsListSubject.next(this.lessons);
+    this.lessonsListSubject.next(this.lessons);
+  }
+
+  public addLesson(newLesson: Lesson) {
+    this.lessons.push(_.cloneDeep(newLesson));
+    this.lessonsListSubject.next(this.lessons);
   }
 }
 
