@@ -41,25 +41,28 @@ class SubjectImplementation implements Subject {
 
 }
 
-// This subject contain all observers that will be notified when a new lesson arrive
-const lessonsListSubject = new SubjectImplementation();
+// Centralized service that manages the data
+class DataStore {
 
-// This define the data of the application
-export let lessonsList$: Observable = {
+ private lessons: Lesson[] = [];
+
+ private lessonsListSubject = new SubjectImplementation();
+
+ public lessonsList$: Observable = {
   subscribe: obs => {
-    lessonsListSubject.subscribe(obs);
-    obs.next(lessons);
+    this.lessonsListSubject.subscribe(obs);
+    obs.next(this.lessons);
   },
   unsubscribe: obs => {
-    lessonsListSubject.unsubscribe(obs);
+    this.lessonsListSubject.unsubscribe(obs);
   }
 };
 
-// 
-let lessons: Lesson[] = [];
-
-export function initializeLessonsList(newList: Lesson[]) {
-  lessons = _.cloneDeep(newList);
-  // Notify to all the observers
-  lessonsListSubject.next(lessons);
+ public initializeLessonsList(newList: Lesson[]) {
+    this.lessons = _.cloneDeep(newList);
+    lessonsListSubject.next(this.lessons);
+  }
 }
+
+export const store = new DataStore();
+

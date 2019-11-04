@@ -24,6 +24,10 @@ RxJs is a toolkit that allow us to build asyncronous applications in reactive st
 - First problem: mixing the ability of observe data and emitting the same data.
 -- Solution: separate the ability of register on observer and the ability to emit data
 - Second Problem: Data Ownering - Encapsulation
+-- Solution: centralize the data with Data store pattern.
+- Conclusion 1:
+In our program we are actually using two different patterns. We are using the <b>observable pattern</b> to create a clear separation between the ability to subscribe to the data and the ability to be able to trigger new versions of that data. So there is a clear separation between that <br/>> 
+And we've <b>centralized the data</b> in a single place in our application to solve the multiple ownership issue that we have. So if the data is modifiable it's important that only one part of the application has ownership of the data and not multiple parts like we had before.
 
 ## Angular CLI version 
 

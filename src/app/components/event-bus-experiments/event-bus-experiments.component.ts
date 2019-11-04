@@ -1,7 +1,7 @@
 import { Lesson } from './../../shared/model/lesson';
 import { Component, OnInit } from '@angular/core';
 import { sampleLessons } from './../../shared/model/sample-lessons';
-import { initializeLessonsList } from './app-data';
+import { store } from './app-data';
 
 @Component({
   selector: 'event-bus-experiments',
@@ -13,9 +13,8 @@ export class EventBusExperimentsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('2.Top level component broadcast all sample lessons');
 
-    initializeLessonsList(sampleLessons.slice(0));
+    store.initializeLessonsList(sampleLessons.slice(0));
 
     // Simulate server push scenario (like web server or ajax request )
     setTimeout(
