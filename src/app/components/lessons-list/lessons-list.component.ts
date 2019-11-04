@@ -14,13 +14,11 @@ export class LessonsListComponent implements OnInit, Observer {
   lessons: Lesson[] = [];
 
   constructor() {
-    console.log('1. LessonsListComponent is register as Observer');
-    lessonsList$.subscribe(this);
   }
-  
 
   ngOnInit() {
-    
+    console.log('1. LessonsListComponent is register as Observer');
+    lessonsList$.subscribe(this);
   }
 
   next(data: Lesson[]) {

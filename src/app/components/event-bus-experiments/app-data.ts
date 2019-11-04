@@ -48,6 +48,7 @@ const lessonsListSubject = new SubjectImplementation();
 export let lessonsList$: Observable = {
   subscribe: obs => {
     lessonsListSubject.subscribe(obs);
+    obs.next(lessons);
   },
   unsubscribe: obs => {
     lessonsListSubject.unsubscribe(obs);
