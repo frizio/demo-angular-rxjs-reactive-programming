@@ -43,6 +43,7 @@ class SubjectImplementation implements Subject {
 
 // Centralized service that manages the data
 class DataStore implements Observable {
+  // Implementing Observable, the store class can be seen as an Observable of the global application state
 
   private lessons: Lesson[] = [];
 
