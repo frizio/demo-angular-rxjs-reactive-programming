@@ -68,6 +68,23 @@ class DataStore {
     this.broadcast();
   }
 
+  public deleteLesson(deleted: Lesson) {
+    _.remove(
+      this.lessons,
+      lesson => lesson.id === deleted.id
+     );
+     this.broadcast();
+  }
+
+  toggleLessonViewed(toggled:Lesson) {
+    const lesson = _.find(
+      this.lessons,
+      lessons => lesson.id === toggled.id
+    );
+    lesson.completed = !lesson.completed;
+    this.broadcast();
+  }
+
   broadcast() {
     this.lessonsListSubject.next(_.cloneDeep(this.lessons));
   }

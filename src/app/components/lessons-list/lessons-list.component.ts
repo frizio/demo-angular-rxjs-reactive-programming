@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LessonsListComponent implements OnInit, Observer {
 
-  lessons: Lesson[] = [];
+  public lessons: Lesson[] = []; //data access for the view
 
   constructor() {
   }
@@ -20,19 +20,15 @@ export class LessonsListComponent implements OnInit, Observer {
   }
 
   next(data: Lesson[]) {
-    this.lessons = data.slice(0);
+    this.lessons = data;
   }
 
   toggleLessonViewed(lesson:Lesson) {
-    lesson.completed = !lesson.completed;
+    store.toggleLessonViewed(lesson);
   }
 
   delete(deleted: Lesson) {
-    _.remove(
-      this.lessons,
-      lesson => lesson.id === deleted.id
-     );
-
+    store.deleteLesson(deleted);
   }
 
 }
