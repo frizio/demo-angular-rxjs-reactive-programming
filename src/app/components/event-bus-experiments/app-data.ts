@@ -60,13 +60,18 @@ class DataStore {
 
  public initializeLessonsList(newList: Lesson[]) {
     this.lessons = _.cloneDeep(newList);
-    this.lessonsListSubject.next(this.lessons);
+    this.broadcast();
   }
 
   public addLesson(newLesson: Lesson) {
     this.lessons.push(_.cloneDeep(newLesson));
-    this.lessonsListSubject.next(this.lessons);
+    this.broadcast();
   }
+
+  broadcast() {
+    this.lessonsListSubject.next(_.cloneDeep(this.lessons));
+  }
+
 }
 
 export const store = new DataStore();
