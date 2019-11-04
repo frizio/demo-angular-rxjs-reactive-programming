@@ -2,16 +2,16 @@ import { Lesson } from './../../shared/model/lesson';
 
 import * as _ from 'lodash';
 
-import { Subject, Observable, Observer } from 'rxjs';
+import { Subject, Observable, Observer, BehaviorSubject } from 'rxjs';
 
 // Centralized service that manages the data
 class DataStore {
 
  private lessons: Lesson[] = [];
 
- private lessonsListSubject = new Subject();
+ private lessonsListSubject = new BehaviorSubject([]);
 
- public lessonsList$: Observable<Lesson[]>  = this.lessonsList$.asObservable();
+ public lessonsList$: Observable<Lesson[]> = this.lessonsListSubject.asObservable();
 
  public initializeLessonsList(newList: Lesson[]) {
     this.lessons = _.cloneDeep(newList);

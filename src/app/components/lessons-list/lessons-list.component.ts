@@ -1,4 +1,5 @@
-import { Observer, store } from './../event-bus-experiments/app-data';
+import { Observer } from 'rxjs';
+import { store } from './../event-bus-experiments/app-data';
 import * as _ from 'lodash';
 import { Lesson } from './../../shared/model/lesson';
 import { Component, OnInit } from '@angular/core';
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './lessons-list.component.html',
   styleUrls: ['./lessons-list.component.css']
 })
-export class LessonsListComponent implements OnInit, Observer {
+export class LessonsListComponent implements OnInit, Observer<Lesson[]> {
 
   public lessons: Lesson[] = []; //data access for the view
 
@@ -20,6 +21,14 @@ export class LessonsListComponent implements OnInit, Observer {
 
   next(data: Lesson[]) {
     this.lessons = data;
+  }
+
+  error(err: any) {
+    console.log(err);
+  }
+
+  complete() {
+    console.log('Completed');
   }
 
   toggleLessonViewed(lesson: Lesson) {
