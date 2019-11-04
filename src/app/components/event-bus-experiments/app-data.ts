@@ -41,10 +41,16 @@ class SubjectImplementation implements Subject {
 
 }
 
+// This subject contain all observers that will be notified when a new lesson arrive
+const lessonsListSubject = new SubjectImplementation();
+
 // This define the data of the application
 export let lessonsList$: Observable = {
   subscribe: obs => {
-    // Take the observer and is going to do to do somethis with thw observer
+    lessonsListSubject.subscribe(obs);
+  },
+  unsubscribe: obs => {
+    lessonsListSubject.unsubscribe(obs);
   }
 };
 
@@ -53,4 +59,6 @@ let lessons: Lesson[] = [];
 
 export function initializeLessonsList(newList: Lesson[]) {
   lessons = _.cloneDeep(newList);
+  // Notify to all the observers
+  lessonsListSubject.next(lessons);
 }
