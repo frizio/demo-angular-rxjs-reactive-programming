@@ -23,7 +23,7 @@ export class LessonsListComponent implements OnInit, Observer {
     this.lessons = data;
   }
 
-  toggleLessonViewed(lesson:Lesson) {
+  toggleLessonViewed(lesson: Lesson) {
     store.toggleLessonViewed(lesson);
   }
 

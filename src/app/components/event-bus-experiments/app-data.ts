@@ -79,7 +79,7 @@ class DataStore {
   toggleLessonViewed(toggled:Lesson) {
     const lesson = _.find(
       this.lessons,
-      lessons => lesson.id === toggled.id
+      lesson => lesson.id === toggled.id
     );
     lesson.completed = !lesson.completed;
     this.broadcast();
