@@ -7,44 +7,42 @@ import { Subject, Observable, Observer, BehaviorSubject } from 'rxjs';
 // Centralized service that manages the data
 class DataStore {
 
- private lessons: Lesson[] = [];
-
  private lessonsListSubject = new BehaviorSubject([]);
 
  public lessonsList$: Observable<Lesson[]> = this.lessonsListSubject.asObservable();
 
+ private cloneLessons() {
+  return _.cloneDeep(this.lessonsListSubject.getValue());
+}
+
  public initializeLessonsList(newList: Lesson[]) {
-    console.log('Call initializeLessonsList');
-    this.lessons = _.cloneDeep(newList);
-    this.broadcast();
+    this.lessonsListSubject.next(_.cloneDeep(newList));
   }
 
   public addLesson(newLesson: Lesson) {
     console.log('Call addLesson');
-    this.lessons.push(_.cloneDeep(newLesson));
-    this.broadcast();
+    const lessons = this.cloneLessons();
+    lessons.push(_.cloneDeep(newLesson));
+    this.lessonsListSubject.next(lessons);
   }
 
   public deleteLesson(deleted: Lesson) {
+    const lessons = this.cloneLessons();
     _.remove(
-      this.lessons,
+      lessons,
       lesson => lesson.id === deleted.id
     );
-    this.broadcast();
+    this.lessonsListSubject.next(lessons);
   }
 
   toggleLessonViewed(toggled: Lesson) {
+    const lessons = this.cloneLessons();
     const lesson = _.find(
-      this.lessons,
+      lessons,
       thelesson => thelesson.id === toggled.id
     );
     lesson.completed = !lesson.completed;
-    this.broadcast();
-  }
-
-  broadcast() {
-    console.log('Call broadcast');
-    this.lessonsListSubject.next(_.cloneDeep(this.lessons));
+    this.lessonsListSubject.next(lessons);
   }
 
 }

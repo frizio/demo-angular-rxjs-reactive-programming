@@ -13,7 +13,7 @@ export class EventBusExperimentsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
+    console.log('Call ngOnInit');
     store.initializeLessonsList(sampleLessons.slice(0));
 
     // Simulate server push scenario (like web server or ajax request )
@@ -31,6 +31,7 @@ export class EventBusExperimentsComponent implements OnInit {
   }
 
   addLesson(lessonText: string) {
+    console.log('Call ngOnInit');
     const newLesson = {
       id: Math.random(),
       description: lessonText

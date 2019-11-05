@@ -23,6 +23,7 @@ export class LessonsListComponent implements OnInit, Observer<Lesson[]> {
   next(data: Lesson[]) {
     console.log('Call next');
     this.lessons = data;
+    console.log(this.lessons);
   }
 
   error(err: any) {
