@@ -27,14 +27,14 @@ class DataStore {
     _.remove(
       this.lessons,
       lesson => lesson.id === deleted.id
-     );
-     this.broadcast();
+    );
+    this.broadcast();
   }
 
-  toggleLessonViewed(toggled:Lesson) {
+  toggleLessonViewed(toggled: Lesson) {
     const lesson = _.find(
       this.lessons,
-      lesson => lesson.id === toggled.id
+      thelesson => thelesson.id === toggled.id
     );
     lesson.completed = !lesson.completed;
     this.broadcast();
