@@ -20,10 +20,8 @@ export class LessonsListComponent implements OnInit, Observer<Lesson[]> {
     store.lessonsList$.subscribe(this);
   }
 
-  next(data: Lesson[]) {
-    console.log('Call next');
+  next = (data: Lesson[]) => {
     this.lessons = data;
-    console.log(this.lessons);
   }
 
   error(err: any) {

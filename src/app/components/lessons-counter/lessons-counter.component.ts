@@ -19,9 +19,8 @@ export class LessonsCounterComponent implements OnInit, Observer<Lesson[]> {
     store.lessonsList$.subscribe(this);
   }
 
-  next(data: Lesson[]) {
-      console.log('Call next');
-      this.lessonsCounter = data.length;
+  next = (data: Lesson[]) => {
+    this.lessonsCounter = data.length;
   }
 
   error(err: any) {
