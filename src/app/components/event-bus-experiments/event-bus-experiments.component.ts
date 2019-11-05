@@ -19,13 +19,12 @@ export class EventBusExperimentsComponent implements OnInit {
     // Simulate server push scenario (like web server or ajax request )
     setTimeout(
       () => {
-       const newLesson = 
-         {
+        const newLesson = {
           id: Math.random(),
           description: 'New lesson arriving from the backend'
-          }
+        };
         store.addLesson(newLesson);
-      }, 
+      },
       5000
     );
 

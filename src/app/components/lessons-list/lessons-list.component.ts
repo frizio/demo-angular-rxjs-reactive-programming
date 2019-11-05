@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LessonsListComponent implements OnInit, Observer<Lesson[]> {
 
-  public lessons: Lesson[] = []; //data access for the view
+  public lessons: Lesson[] = []; // data access for the view
 
   constructor() { }
 
