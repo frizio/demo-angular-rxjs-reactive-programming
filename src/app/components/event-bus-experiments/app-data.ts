@@ -14,11 +14,13 @@ class DataStore {
  public lessonsList$: Observable<Lesson[]> = this.lessonsListSubject.asObservable();
 
  public initializeLessonsList(newList: Lesson[]) {
+    console.log('Call initializeLessonsList');
     this.lessons = _.cloneDeep(newList);
     this.broadcast();
   }
 
   public addLesson(newLesson: Lesson) {
+    console.log('Call addLesson');
     this.lessons.push(_.cloneDeep(newLesson));
     this.broadcast();
   }
@@ -41,6 +43,7 @@ class DataStore {
   }
 
   broadcast() {
+    console.log('Call broadcast');
     this.lessonsListSubject.next(_.cloneDeep(this.lessons));
   }
 

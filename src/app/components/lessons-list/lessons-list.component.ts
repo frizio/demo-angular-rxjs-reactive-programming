@@ -16,10 +16,12 @@ export class LessonsListComponent implements OnInit, Observer<Lesson[]> {
   constructor() { }
 
   ngOnInit() {
+    console.log('Call ngOnInit');
     store.lessonsList$.subscribe(this);
   }
 
   next(data: Lesson[]) {
+    console.log('Call next');
     this.lessons = data;
   }
 
